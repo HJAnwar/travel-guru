@@ -1,0 +1,77 @@
+/* .body{
+    background-color:white;
+    background-attachment: fixed;
+    background-size: cover;
+   
+
+} */
+
+
+.login-box{
+    top: 100px;
+    width: 400px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    border: 1px solid gray;
+    padding: 30px;
+}
+.textbox{
+    width: 100%;
+    overflow: hidden;
+    font-size: 20px;
+    padding: 8px 0;
+    margin: 8px 0;
+    border-bottom:1px solid #4caf50;
+
+}
+.textbox input{
+    border:none;
+    outline:none;
+    background:none;
+    font-size: 15px;
+    width: 100%;
+    float: left;
+    
+}
+.btn{
+    width: 100%;
+    background:orange;
+    border: none;
+    padding: 5px;
+    font-size:15px;
+    cursor: pointer;
+    margin: 12px 0;
+    
+}
+
+.loginarea{
+    width: 400px;
+    position: absolute;
+    left: 50%;
+    top: 68%;
+    transform: translate(-50%, 68%);
+   
+}
+.loginbtn{
+    display: fixed;
+    width: 100%;
+    border: none;
+    border-radius: 50px;
+    border: 1px solid gray;
+    padding: 5px;
+    font-size:15px;
+    cursor: pointer;
+    margin: 12px 0;
+    height: 35px;
+   
+}
+.loginbtn img{
+    height: 35px;
+    margin-top: 2px;
+}
+.loginbtn p{
+    margin-left: 100px;
+    margin-top: -40px;
+    font-size: 20px;
+}

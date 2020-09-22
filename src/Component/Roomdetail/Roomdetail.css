@@ -1,0 +1,36 @@
+.room-component{
+    display:flex;
+
+}
+.room-img{
+    width: 30%;
+    margin-left: 5px;
+    margin-right: 5px;
+    
+}
+.room-img img{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height:250px;
+    
+    
+}
+.room-detaile{
+    width: 30%;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-right: 2px solid red;
+    
+    
+}
+.room-type1{
+    margin-top: 30px;
+    
+}
+.room-type2{
+    margin-top: 140px;
+}
+.room-type3{
+    margin-top: 150px;
+}
+

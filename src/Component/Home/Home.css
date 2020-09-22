@@ -1,0 +1,45 @@
+.home{
+    background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../../images/Rectangle\ 1.png);
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 900px;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+   
+
+}
+nav{
+    line-height: 100px;
+    font-size: 15px;
+}
+nav a{
+    color:springgreen;
+    margin-left:30px;
+    text-decoration:none;
+    font-weight: 400;
+}
+.searchArea{
+    height: 30px;
+    width:250px;
+    background-color:rgba(255, 238, 238, 0.472);
+    border-radius:5px;
+    border:1px solid rgb(214, 197, 197);
+}
+.button{
+    background-color: yellow;
+    padding:10px 15px 10px 15px;
+    border-radius:5px;
+    
+}
+.nameimg{
+    display: flex;
+}
+.home-box{
+    margin-left: 10px;
+}
+.home-box img{
+    width: 300px;
+    height: 500px;
+}

@@ -1,0 +1,16 @@
+.header{
+    line-height: 20px;
+    text-align: center;
+}
+.header img{
+   color:rgb(212, 203, 203);
+   height: 30px;
+
+}
+.color{
+    color: rgb(255, 192, 192);
+    margin-left: 20px;
+    font-size: 20px;
+    text-decoration: none;
+
+}

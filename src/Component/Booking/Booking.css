@@ -1,0 +1,52 @@
+
+.booking{
+    background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../../images/Rectangle\ 1.png);
+    text-align: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 900px;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+}
+
+.loginBox{
+    width: 400px;
+    border: 1px solid gray;
+    padding: 30px;
+    margin-left: 100px;
+    background-color: azure;
+    margin-top: 20%;
+}
+.textbox{
+    width: 100%;
+    overflow: hidden;
+    font-size: 20px;
+    padding: 8px 0;
+    margin: 8px 0;
+    border-bottom:1px solid #4caf50;
+
+}
+.textbox input{
+    border:none;
+    outline:none;
+    background:none;
+    font-size: 15px;
+    width: 100%;
+    float: left;
+    
+}
+.btn{
+    width: 100%;
+    background:orange;
+    border: none;
+    padding: 5px;
+    font-size:15px;
+    cursor: pointer;
+    margin: 12px 0;
+    
+}
+
+
+
+
