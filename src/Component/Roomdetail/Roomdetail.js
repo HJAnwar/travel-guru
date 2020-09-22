@@ -10,10 +10,10 @@ import logo from '../../images/Logo.png';
 const Roomdetail = () => {
     return (
         <div>
-            <nav>
+            <nav className='roomdetailNav'>
                 <img src={logo} style={{ height: "50px", marginLeft: "100px", marginRight: "50px", }} alt="" />
                 <FormControl className="searchArea" type="text" placeholder="     Search Your Destination..."></FormControl>
-                <a href="/news">News</a>
+                <a href="/home">News</a>
                 <a href="/destination">Destination</a>
                 <a href="/blog">Blog</a>
                 <a href="/contact">Contact</a>

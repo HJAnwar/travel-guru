@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import './Login.css';
 import Fb from '../../images/fb.png';
@@ -72,58 +72,113 @@ const Login = () => {
           });
     }
 
-    const handleResetPassword= email => {
-        var auth = firebase.auth();
-        
-        auth.sendPasswordResetEmail(email).then(function() {
-        // Email sent.
-        }).catch(function(error) {
-        // An error happened.
-});
+    const [newUser, setNewUser] = useState(false);
+    const [user, setUser] = useState({
+        isSignedIn: false,
+        name: '',
+        email: '',
+        password: ''
+
+    });
+
+    const handleBlur = (e) => {
+
+        let isFieldValid = true;
+        if (e.target.name === 'email') {
+            isFieldValid = /\S+@\S+\.\S+/.test(e.target.value);
+        }
+
+        if (e.target.name === 'password') {
+            const isPasswordValid = e.target.value.length > 6;
+            const passwordHasNumber = /\d{1}/.test(e.target.value);
+            isFieldValid = isPasswordValid && passwordHasNumber;
+        }
+
+        if (isFieldValid) {
+            const newUserInfo = { ...user };
+            newUserInfo[e.target.name] = e.target.value;
+            setUser(newUserInfo);
+        }
+    }
+    const handleSubmit = (e) => {
+        if (newUser && user.email && user.password) {
+            firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+                .then(res => {
+                    const newUserInfo = { ...user };
+                    newUserInfo.error = '';
+                    newUserInfo.success = true;
+                    setLoggedInUser(newUserInfo);
+                    history.replace(from);
+                })
+                .catch(error => {
+                    const newUserInfo = { ...user };
+                    newUserInfo.error = error.message;
+                    newUserInfo.success = false;
+                    setLoggedInUser(newUserInfo);
+                  
+                });
+        }
+        if (!newUser && user.email && user.password) {
+            firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+                .then(res => {
+                    const newUserInfo = { ...user };
+                    newUserInfo.error = '';
+                    newUserInfo.success = true;
+                    setLoggedInUser(newUserInfo);
+                    history.replace(from);
+                    console.log('sign in user info', res.user);
+                })
+                .catch(error => {
+                    const newUserInfo = { ...user };
+                    newUserInfo.error = error.message;
+                    newUserInfo.success = false;
+                    setLoggedInUser(newUserInfo);
+
+                });
+        }
+        e.preventDefault();
     }
 
-    const handleBlur = (event) => {
-
-        console.log(event.target.value);
-    }
-    const handleSubmit= () => {
-
-    }
+    
     return (
         <header className="body">
-            <nav>
+            <nav className='loginNav'>
                 <img src={logo} style={{ height: "50px", marginLeft: "100px", marginRight: "50px", }} alt="" />
                 <FormControl className="searchArea" type="text" placeholder="     Search Your Destination..."></FormControl>
-                <a href="/news">News</a>
+                <a href="/home">News</a>
                 <a href="/destination">Destination</a>
                 <a href="/blog">Blog</a>
                 <a href="/contact">Contact</a>
                 <a href="/login"><button className="button">Login</button></a>
                 <p>{loggedInUser.name}</p>
             </nav>
-            <form onSubmit={handleSubmit} className="login-box">
-              <h2>Login</h2>
+            
 
+            <form className='login-box' onSubmit={handleSubmit}>
+                
+                {newUser && 
                 <div className='textbox'>
-                    <input name='email' onBlur={handleBlur} type="text" placeholder='Username or email'/>
+                    <input onBlur={handleBlur} name="name" type="text" placeholder="first-name" />
                 </div>
-
+                }
+                
+                <br />
                 <div className='textbox'>
-                    <input name='password'  onBlur={handleBlur} type="password" name='' placeholder='Password'/>
+                    <input onBlur={handleBlur} type="text" name='email' placeholder="email address" required />
                 </div>
-
-                <div style={{display:"flex"}}>
-                    <input style={{marginTop:"5px"}} type="checkbox" /><label htmlFor="">remember me</label>
-                    <small onClick={handleResetPassword} style={{color:'red', marginLeft:'50px'}}>forget password</small>
+                <br />
+                <div className='textbox'>
+                    <input onBlur={handleBlur} type="password" name="password" id="" placeholder="password" required />
                 </div>
-
-                    <input className='btn' type="button" value='Login'/>
-                    <small style={{marginLeft:"50px"}}>Don't have account?<Link to="/signup" style={{color:'red'}}>create an account</Link></small>
-
+                <br />
+                <input className="btn" type="submit" value={newUser ? 'Sign up' : 'Sign In'} />
+                <div className="newSign">
+                    <input type="checkbox" onChange={() => setNewUser(!newUser)} name="newUser" id="" />
+                    <label htmlFor="">New User Sign up</label>
+                </div>
             </form>
             <br/>
             <br/>
-            
             <div  className="login">
                 <small style={{display:"flex"}}><hr/>Or<hr/></small>
 

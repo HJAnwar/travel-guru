@@ -11,10 +11,11 @@ import {
 } from "react-router-dom";
 import Home from './Component/Home/Home';
 import Booking from './Component/Booking/Booking';
-import Signin from './Component/Signin/Signin';
 import Login from './Component/Login/Login';
 import PrivateRoute from './Component/PrivateRoute/PrivateRoute';
 import Roomdetail from './Component/Roomdetail/Roomdetail';
+import Notfound from './Component/Notfound/Notfound';
+import Footer from './Component/Footer/Footer';
 
 
 export const UserContext = createContext();
@@ -34,23 +35,20 @@ function App() {
        <Route path="/booking">
           <Booking/>
        </Route>
-       <Route path="/signup">
-          <Signin></Signin>
-       </Route>
        <Route path="/login">
          <Login></Login>
        </Route>
        <PrivateRoute path="/roomdetail">
          <Roomdetail></Roomdetail>
        </PrivateRoute>
-       
        <Route exact path="/">
           <Home/>
        </Route>
        <Route path="*">
-          
+          <Notfound></Notfound>
        </Route>
      </Switch>
+     <Footer></Footer>
    </Router>
    </UserContext.Provider>
   );
